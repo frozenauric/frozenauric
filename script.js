@@ -1,21 +1,25 @@
-// Si deseas agregar interacciones más complejas con JavaScript
+// Interacción con las ventanas flotantes
 const floatingContainer = document.querySelector('.floating-container');
-const popup = document.querySelector('.popup');
+const popups = document.querySelectorAll('.popup');
 
-// Al pasar el mouse sobre el contenedor
+// Cuando el mouse se acerca al contenedor
 floatingContainer.addEventListener('mouseover', () => {
-    popup.style.display = 'block';
-    setTimeout(() => {
-        popup.style.opacity = '1';
-        popup.style.transform = 'translateX(-50%) translateY(10px)';
-    }, 100); // Retraso para la animación
+    popups.forEach(popup => {
+        popup.style.display = 'block';
+        setTimeout(() => {
+            popup.style.opacity = '1';
+            popup.style.transform = 'translateX(-50%) translateY(10px)';
+        }, 100);
+    });
 });
 
-// Al quitar el mouse del contenedor
+// Cuando el mouse sale del contenedor
 floatingContainer.addEventListener('mouseleave', () => {
-    popup.style.opacity = '0';
-    popup.style.transform = 'translateX(-50%) translateY(0)';
-    setTimeout(() => {
-        popup.style.display = 'none';
-    }, 300); // Esperar hasta que la animación termine antes de ocultarlo
+    popups.forEach(popup => {
+        popup.style.opacity = '0';
+        popup.style.transform = 'translateX(-50%) translateY(0)';
+        setTimeout(() => {
+            popup.style.display = 'none';
+        }, 300);
+    });
 });
