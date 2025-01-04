@@ -1,21 +1,21 @@
-// Obtener el modal y los elementos de control
-var modal = document.getElementById("myModal");
-var openModalBtn = document.getElementById("openModalBtn");
-var closeModalBtn = document.getElementById("closeModalBtn");
+// Si deseas agregar interacciones más complejas con JavaScript
+const floatingContainer = document.querySelector('.floating-container');
+const popup = document.querySelector('.popup');
 
-// Cuando se haga clic en el botón, abrir el modal
-openModalBtn.onclick = function() {
-    modal.style.display = "block";
-}
+// Al pasar el mouse sobre el contenedor
+floatingContainer.addEventListener('mouseover', () => {
+    popup.style.display = 'block';
+    setTimeout(() => {
+        popup.style.opacity = '1';
+        popup.style.transform = 'translateX(-50%) translateY(10px)';
+    }, 100); // Retraso para la animación
+});
 
-// Cuando se haga clic en el botón de cerrar, cerrar el modal
-closeModalBtn.onclick = function() {
-    modal.style.display = "none";
-}
-
-// Si el usuario hace clic fuera del modal, cerrarlo
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+// Al quitar el mouse del contenedor
+floatingContainer.addEventListener('mouseleave', () => {
+    popup.style.opacity = '0';
+    popup.style.transform = 'translateX(-50%) translateY(0)';
+    setTimeout(() => {
+        popup.style.display = 'none';
+    }, 300); // Esperar hasta que la animación termine antes de ocultarlo
+});
