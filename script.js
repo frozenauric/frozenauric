@@ -1,25 +1,15 @@
-// Interacción con las ventanas flotantes
-const floatingContainer = document.querySelector('.floating-container');
-const popups = document.querySelectorAll('.popup');
+// JavaScript para animar la aparición de ventanas flotantes
+const infoBoxes = document.querySelectorAll('.info-box');
 
-// Cuando el mouse se acerca al contenedor
-floatingContainer.addEventListener('mouseover', () => {
-    popups.forEach(popup => {
-        popup.style.display = 'block';
-        setTimeout(() => {
-            popup.style.opacity = '1';
-            popup.style.transform = 'translateX(-50%) translateY(10px)';
-        }, 100);
+// Cuando el mouse se acerca a los recuadros
+infoBoxes.forEach(box => {
+    box.addEventListener('mouseover', () => {
+        box.style.transform = 'scale(1.1)';
+        box.style.transition = 'all 0.3s ease-in-out';
     });
-});
-
-// Cuando el mouse sale del contenedor
-floatingContainer.addEventListener('mouseleave', () => {
-    popups.forEach(popup => {
-        popup.style.opacity = '0';
-        popup.style.transform = 'translateX(-50%) translateY(0)';
-        setTimeout(() => {
-            popup.style.display = 'none';
-        }, 300);
+    
+    // Cuando el mouse sale de los recuadros
+    box.addEventListener('mouseleave', () => {
+        box.style.transform = 'scale(1)';
     });
 });
